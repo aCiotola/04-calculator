@@ -6,7 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 /**
@@ -29,17 +31,21 @@ import android.widget.TextView;
  **/
 public class MainActivity extends AppCompatActivity {
     String TAG = "CALC";  // tag for Logging
-    EditText etNum1, etNum2;
-    TextView result = null;
+    EditText etNum1, etNum2, etMap;
+    TextView result = null, errorText;
     double num1, num2;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         // get a handle to text fields
         etNum1 = (EditText) findViewById(R.id.num1);
         etNum2 = (EditText) findViewById(R.id.num2);
+        etMap = (EditText) findViewById(R.id.nameText);
         result = (TextView) findViewById(R.id.result);
+        errorText = (TextView) findViewById(R.id.errorText);
     }
 
     public void addNums(View v) {
@@ -131,19 +137,8 @@ public class MainActivity extends AppCompatActivity {
      *  implicit intent:  view + geo uri
      * @param v
      */
-    public void showMap(View v) {
-
-        String country = getResources().getString(R.string.country);
-        Uri  geoLocation = Uri.parse("geo:0,0?q=" + Uri.encode(country));
-
-        Intent geoIntent = new Intent(Intent.ACTION_VIEW);
-
-        geoIntent.setData(geoLocation);
-        if (geoIntent.resolveActivity(getPackageManager()) != null) {
-            startActivity(geoIntent);
-        } else {
-            result.setText(R.string.error_no_geo);
-        }
-
+    public void showMap(View v)
+    {
+        startActivity(new Intent(MainActivity.this, MapsActivity.class));
     }
 }

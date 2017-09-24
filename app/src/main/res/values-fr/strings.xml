@@ -9,4 +9,8 @@
     <string name="country">France</string>
     <string name="result_initial">La réponse s\'affichera ici</string>
     <string name="error_no_geo">aucune action définie pour l\'intent geo</string>
+    <string name="nameTextField">Entrez le texte ici</string>
+    <string name="mapFieldBtn">recherche de carte</string>
+    <string name="errorMsg">Entrez un pays dans le champ de texte</string>
+    <string name="searchBtn">Chercher</string>
 </resources>
